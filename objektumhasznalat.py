@@ -30,5 +30,10 @@ for i in file:
     haromszog.append(i.strip().split('*'))
 print(haromszog)
 
-
+#hozz letre minden sorból egy Haromszog típusú objektumot
+#Metódusa segitsegevel ird ki hogy a szamok  haromszoget alkotnak-e
+for i in file:
+    Egyharomszog = Haromszog(i)
+    print(Egyharomszog.haromszoge())
+    print(Egyharomszog.kerulet())    
 

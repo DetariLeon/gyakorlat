@@ -1,4 +1,9 @@
+from math import *
+from xmlrpc.client import boolean
 # OSZTÁLY:
+hsz = []
+f1 = open("haromszog.txt", "r")
+f1.readline()
 
 class Haromszog:
     a: int
@@ -19,21 +24,30 @@ class Haromszog:
             return "Nem alkotnak háromszöget."
     
     # osztály metódusa: egész számként visszaadja a háromszög kerületét
-    def kerulet(self)-> int            :
+    def kerulet(self):
         return self.a + self.b + self.c
     
-haromszog = []
-file = open('haromszog.txt','r')
-file.readline()
+    def derekszoge(self):
+        if pow(self.a,2) + pow(self.b,2) == pow(self.c,2):
+            return True
+        return False
 
-for i in file:
-    haromszog.append(i.strip().split('*'))
-print(haromszog)
+    def vane(self, szam) -> boolean:
+        return self.a == szam or self.b == szam or self.c == szam
 
-#hozz letre minden sorból egy Haromszog típusú objektumot
-#Metódusa segitsegevel ird ki hogy a szamok  haromszoget alkotnak-e
-for i in file:
-    Egyharomszog = Haromszog(i)
-    print(Egyharomszog.haromszoge())
-    print(Egyharomszog.kerulet())    
+for i in f1:
+    hsz.append(i.strip().split("*"))
 
+for sor in hsz:
+    egyhsz = Haromszog(sor)
+    print(egyhsz.haromszoge())
+ 
+hszf = []#haromszogfelhasznalolistacucc   
+for b in range(3):
+    hszf.append(int(input("Addja meg a haromszog 3 oldalát.")))
+egyharomszog = Haromszog(hszf)
+print(egyharomszog.haromszoge())
+
+print("Ez a háromszög derékszögű?",egyharomszog.derekszoge())
+fszam = int(input("Addjom meg egy számot! "))
+print(f"A megadott szám szerepel?" ,egyharomszog.vane(fszam))
